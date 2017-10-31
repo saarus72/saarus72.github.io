@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <script type="text/javascript">
+        	function getResponse() {
+
+                var request = {
+                    passage: $("#passage").val(),
+                    question: $("#question").val()
+                };
+
+        		$.post(
+                    "http://176.214.237.60:8005/",
+                    request,
+                    function(data) {
+                        $("#answer").val(data);
+                    }
+                );
+        	}
+
+        </script>
+
+        <p>
+        	<b>Предложение:</b>
+        </p>
+    	<textarea id="passage" style="overflow:auto;resize:none" cols="120" rows="20"></textarea>
+    	 
+    	<p>
+        	<b>Вопрос:</b>
+        </p>
+    	<textarea id="question" style="overflow:auto;resize:none" cols="120" rows="5"></textarea>
+
+    	<p>
+        	<b>Ответ:</b>
+        </p>
+    	<textarea id="answer" style="overflow:auto;resize:none" cols="120" rows="5"></textarea>
+
+        <p>
+        	<button onclick="getResponse();">
+        		Отправить
+        	</button>
+        </p>
+    </body>
+</html>
